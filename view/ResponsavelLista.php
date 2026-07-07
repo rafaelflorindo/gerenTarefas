@@ -14,43 +14,53 @@ $responsaveis = $controller->listar();
 <head>
     <meta charset="UTF-8">
     <title>Lista de Responsáveis</title>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <hr>
-<a href="../index.php">🏠 Voltar para o Menu Principal</a>
-    <h1>Responsáveis Cadastrados</h1>
 
-    <?php if (isset($_GET['sucesso'])): ?>
-        <p style="color: green;">Responsável salvo con sucesso!</p>
-    <?php endif; ?>
+    <a href="../index.php" class="btn-link btn-secondary" style="margin-bottom: 20px;">🏠 Voltar para o Menu Principal</a>
 
-    <a href="ResponsavelCadastro.php">Cadastrar Novo Responsável</a> | 
-    <a href="TarefaLista.php">Ver Tarefas</a>
-    <br><br>
+    <div class="container" style="max-width: 800px; margin: 0 0 20px 0;">
+        <h1>Responsáveis Cadastrados</h1>
 
-    <table border="1" cellpadding="5" cellspacing="0">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>E-mail</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (empty($responsaveis)): ?>
+        <?php if (isset($_GET['sucesso'])): ?>
+            <div class="alert-success">
+                Responsável salvo com sucesso!
+            </div>
+        <?php endif; ?>
+
+        <div class="submenu" style="margin-bottom: 25px;">
+            <a href="ResponsavelCadastro.php" class="btn-link">➕ Cadastrar Novo Responsável</a>
+            <a href="TarefaLista.php" class="btn-link btn-secondary" style="margin-left: 10px;">📋 Ver Tarefas</a>
+        </div>
+
+        <table class="table-data">
+            <thead>
                 <tr>
-                    <td colspan="3">Nenhum responsável cadastrado.</td>
+                    <th style="width: 10%;">ID</th>
+                    <th style="width: 50%;">Nome</th>
+                    <th style="width: 40%;">E-mail</th>
                 </tr>
-            <?php else: ?>
-                <?php foreach ($responsaveis as $resp): ?>
+            </thead>
+            <tbody>
+                <?php if (empty($responsaveis)): ?>
                     <tr>
-                        <td><?php echo $resp->getId(); ?></td>
-                        <td><?php echo $resp->getNome(); ?></td>
-                        <td><?php echo $resp->getEmail(); ?></td>
+                        <td colspan="3" style="text-align: center; color: #7f8c8d; padding: 20px;">
+                            Nenhum responsável cadastrado.
+                        </td>
                     </tr>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </tbody>
-    </table>
+                <?php else: ?>
+                    <?php foreach ($responsaveis as $resp): ?>
+                        <tr>
+                            <td><strong><?php echo $resp->getId(); ?></strong></td>
+                            <td><?php echo $resp->getNome(); ?></td>
+                            <td><?php echo $resp->getEmail(); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+
 </body>
 </html>

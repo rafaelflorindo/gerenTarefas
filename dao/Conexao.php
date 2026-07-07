@@ -16,7 +16,7 @@ class Conexao
                 // Ajuste o nome do banco, usuário e senha conforme o seu ambiente local
                 $dsn = "mysql:host=localhost;dbname=geren_tarefas;charset=utf8mb4";
                 $usuario = "root";
-                $senha = "Senac123";
+                $senha = "Senac1234";
 
                 self::$instancia = new PDO($dsn, $usuario, $senha);
                 // Configura o PDO para estourar exceções em caso de erros de SQL

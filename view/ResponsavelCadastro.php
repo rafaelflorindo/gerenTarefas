@@ -16,27 +16,38 @@ $controller->cadastrar();
 <head>
     <meta charset="UTF-8">
     <title>Cadastrar Responsável</title>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <hr>
-<a href="../index.php">🏠 Voltar para o Menu Principal</a>
-    <h1>Cadastrar Novo Responsável</h1>
 
-    <?php if (isset($_GET['erro'])): ?>
-        <p style="color: red;">Erro: Preencha todos os campos corretamente!</p>
-    <?php endif; ?>
+    <a href="../index.php" class="btn-link btn-secondary" style="margin-bottom: 20px;">🏠 Voltar para o Menu Principal</a>
 
-    <form action="ResponsavelCadastro.php" method="POST">
-        <label for="nome">Nome:</label><br>
-        <input type="text" id="nome" name="nome" required><br><br>
+    <div class="container">
+        <h1>Cadastrar Novo Responsável</h1>
 
-        <label for="email">E-mail:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
+        <?php if (isset($_GET['erro'])): ?>
+            <div class="alert-danger">
+                Erro: Preencha todos os campos corretamente!
+            </div>
+        <?php endif; ?>
 
-        <button type="submit">Salvar Responsável</button>
-    </form>
+        <form action="ResponsavelCadastro.php" method="POST">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" class="form-control" required>
+            </div>
 
-    <br>
-    <a href="ResponsavelLista.php">Voltar para a Listagem</a>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-link">Salvar Responsável</button>
+                <a href="ResponsavelLista.php" style="color: #3498db; text-decoration: none; font-weight: bold;">Voltar para a Listagem</a>
+            </div>
+        </form>
+    </div>
+
 </body>
 </html>
